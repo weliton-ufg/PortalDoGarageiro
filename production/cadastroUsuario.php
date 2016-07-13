@@ -34,8 +34,8 @@
 			$linha=$buscaUsuario->fetchAll(PDO::FETCH_OBJ);
 			// se usuario nao estive cadastrado
 			if ($buscaUsuario->rowcount()==0) {	
-				$inserir=$pdo->prepare("INSERT INTO pessoa(nome,email,senha,cnpj)VALUES(?,?,?,?)");
-				$dados = array($nome,$email,$senha,$cnpj);
+				$inserir=$pdo->prepare("INSERT INTO pessoa(nome,email,senha,cnpj,nivel)VALUES(?,?,?,?,?)");
+				$dados = array($nome,$email,$senha,$cnpj,1);
 				//$inserir->bindValue(":nome",$nome);
 
 				$cadastrar=$inserir->execute($dados);
