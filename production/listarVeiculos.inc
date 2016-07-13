@@ -26,18 +26,21 @@
 							</h3>
 						</div>
 						<div class="panel-body">
-							<img alt="Bootstrap Image Preview" height="100" width="100" class="img-thumbnail"                 src=<?php echo $listar->imagem;?> />
-							Panel content
+							<img class="col-md-12" alt="Bootstrap Image Preview"  class="img-thumbnail"                 src=<?php echo $listar->imagem;?> />
 						</div>
 						<div class="panel-footer">
-						<a href="">	Panel footer </a>
+						<a href=<?php echo "index.php?id=detalheVeiculo&placa=".$listar->placa;?>
+						  
+						><font size="3">	Detalhe >> </font> </a>
 						</div>
 					</div>
 				</div>
 				
-				<?php  } }else{
-          echo "<h2>Não á veículo cadastrado</h2>";
-          }?>
+				<?php  } 
+					}else{
+          			echo "<h2>Não á veículo cadastrado</h2>";
+          			}
+          		?>
 
 			</div>
 		</div>
