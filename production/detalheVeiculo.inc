@@ -111,11 +111,18 @@
 		<label for="exampleInputEmail1">Descrição</label>
 		<input type="text" class="form-control" name="observacao" value=<?php echo $descricao ;?> />
 	    </div>
-
+		
 	    <div class="form-group col-md-4">
-	    	<button  class="btn btn-primary" )"> Voltar</button></a>
-	    	<button  class="btn btn-warning" )"> Editar</button></a>
-	        <button type="" class="btn btn-danger ">Excluir</button>
+	    </br>
+	    	<button  class="btn btn-primary " onclick="window.location.href='index.php?id=listarVeiculos';" )">
+			<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+	    	 Voltar</button></a>
+	    	<button  class="btn btn-warning " )"> 
+			<span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
+	    	Editar</button></a>
+	        <button type="" class="btn btn-danger ">
+			<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+	         Excluir</button>
 		</div>
 	</div>
 </div>

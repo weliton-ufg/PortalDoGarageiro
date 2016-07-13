@@ -61,19 +61,19 @@
 		<label for="exampleInputEmail1">Descrição</label>
 		<input type="" class="form-control" name="descricao" />
 	</div>
-		<div class="form-group col-md-2">
+		<div class="form-group col-md-1">
 		 
 		<label for="exampleInputEmail1">Ano</label>
 		<input type="" class="form-control" name="ano" />
 	</div>
 
-	<div class="form-group col-md-2">
+	<div class="form-group col-md-1">
 		 
 		<label for="exampleInputEmail1">Modelo</label>
 		<input type="" class="form-control" name="modelo" />
 	</div>
 
-		<div class="form-group col-md-3">
+		<div class="form-group col-md-2">
 		 
 		<label for="exampleInputEmail1">Cor</label>
 		<input type="" class="form-control" name="cor" />
@@ -83,7 +83,7 @@
 		<label for="exampleInputEmail1">Placa</label>
 		<input type="" class="form-control" name="placa" />
 	</div>
-	<div class="form-group col-md-4"> 
+	<div class="form-group col-md-3"> 
 		<label for="exampleInputEmail1">Chassi</label>
 		<input type="" class="form-control" name="chassi" />
 	</div>
@@ -92,12 +92,12 @@
 		<label for="exampleInputEmail1">Renavan</label>
 		<input type="" class="form-control" name="renavan" />
 	</div>
-		<div class="form-group col-md-3">
+		<div class="form-group col-md-2">
 		 
 		<label for="exampleInputEmail1">Valor de compra</label>
 		<input type="number" class="form-control" name="valorCompra" />
 	</div>
-		<div class="form-group col-md-3">
+		<div class="form-group col-md-2">
 		 
 		<label for="exampleInputEmail1">Valor de venda</label>
 		<input type="number" class="form-control" name="valorVenda" />
@@ -120,17 +120,47 @@
 		<label for="exampleInputEmail1">Data de aquisição</label>
 		<input type="date" class="form-control" name="dataAquisicao" />
 	</div>
-	<div class="form-group col-md-8">
+	<div class="form-group col-md-6">
 		 
 		<label for="exampleInputEmail1">Observação</label>
 		<input type="" class="form-control" name="observacao" />
 	</div>
-	<div class="form-group col-md-4">
+	<div class="form-group col-md-3">
 		 
 		<label for="exampleInputFile">
-			Imagem
+			Imagem 1
 		</label>
 		<input type="file" name="imagem" />
+		<p class="help-block">
+			Escolha uma imagem para o veículo.
+		</p>
+	</div>
+	<div class="form-group col-md-3">
+		 
+		<label for="exampleInputFile">
+			Imagem 2
+		</label>
+		<input type="file" name="imagem2" />
+		<p class="help-block">
+			Escolha uma imagem para o veículo.
+		</p>
+	</div>
+	<div class="form-group col-md-3">
+		 
+		<label for="exampleInputFile">
+			Imagem 3
+		</label>
+		<input type="file" name="imagem3" />
+		<p class="help-block">
+			Escolha uma imagem para o veículo.
+		</p>
+	</div>
+	<div class="form-group col-md-3">
+		 
+		<label for="exampleInputFile">
+			Imagem 4
+		</label>
+		<input type="file" name="imagem4" />
 		<p class="help-block">
 			Escolha uma imagem para o veículo.
 		</p>
