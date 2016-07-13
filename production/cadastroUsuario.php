@@ -8,32 +8,67 @@
 	$email=$_POST['email'];
 	$nome=$_POST['nome'];
 	$senha=$_POST['senha'];
+	$cnpj=$_POST['cnpj'];
+	$nomeFantasia=$_POST['nomeFantasia'];
 	//$razaoSocial=$_POST['razaoSocial'];
 	//$nomeFantasia=$_POST['nomeFantasia'];
 	//$cpf=$_POST['cpf'];
 	//$cnpj=$_POST['cnpj'];
 	//echo $nome ;
 	//echo "string";
+	$buscaLoja=$pdo->prepare("SELECT * FROM loja WHERE cnpjLoja='".$cnpj."'" );
+	$buscaLoja->execute();
+	$linha=$buscaLoja->fetchAll(PDO::FETCH_OBJ);
 
+  if($buscaLoja->rowcount()==0) {
 
-	//$senha='91645709';
-	//mysql_query();
-	$inserir=$pdo->prepare("INSERT INTO pessoa(nome,email,senha)VALUES(?,?,?)");
-	$dados = array($nome,$email,$senha);
-	//$inserir->bindValue(":nome",$nome);
+		$inserirLoja=$pdo->prepare("INSERT INTO loja(cnpjLoja,nomeFantasia)VALUES(?,?)");
+		$dadosLoja= array($cnpj,$nomeFantasia);
+		$cadastrarLoja=$inserirLoja->execute($dadosLoja);
 
-	$cadastrar=$inserir->execute($dados);
-	//echo "var cadasrar ".$cadastrar."<br/>";
-	$result;
-	if($cadastrar){
+		//se cadastro da loja der certo
+		if ($cadastrarLoja) {
+			//verifica se usuario ja está cadastrado
+			$buscaUsuario=$pdo->prepare("SELECT * FROM pessoa WHERE email='$email' AND cnpj='$cnpj'" );
+			$buscaUsuario->execute();
+			$linha=$buscaUsuario->fetchAll(PDO::FETCH_OBJ);
+			// se usuario nao estive cadastrado
+			if ($buscaUsuario->rowcount()==0) {	
+				$inserir=$pdo->prepare("INSERT INTO pessoa(nome,email,senha,cnpj)VALUES(?,?,?,?)");
+				$dados = array($nome,$email,$senha,$cnpj);
+				//$inserir->bindValue(":nome",$nome);
 
-		
-		$result=1;
-		//header("Location:login.html");
-		
+				$cadastrar=$inserir->execute($dados);
+
+				//se cadastro do usuario der certo
+				if($cadastrar){
+					$result=1;
+				}else{
+					//erro no cadastro do usuario
+					$result=0;
+					//deleta a loja
+					$QuerydeletarLoja=$pdo->prepare("DELETE FROM loja WHERE cnpjLoja='".$cnpj."'");
+					$dadosLoja= array($cnpj);
+					$deletarLoja=$QuerydeletarLoja->execute($dadosLoja);
+
+				}
+				
+			}else{
+				$result=4;
+				//deleta a loja
+				$QuerydeletarLoja=$pdo->prepare("DELETE FROM loja WHERE cnpjLoja='".$cnpj."'");
+				$dadosLoja= array($cnpj);
+				$deletarLoja=$QuerydeletarLoja->execute($dadosLoja);
+			}
+			
+		}else{
+			//erro no cadastro da loja
+			$result=2;
+
+		}
 	}else{
-		$result=0;
-		
+		//loja ja cadastrada
+		$result=3;
 
 	}
 ?>
@@ -47,8 +82,20 @@
 				alert("Erro no cadstro! Tente Novamente");
 	 			window.location.href="login.html";
 			}
-			else {
+			if (resultado==1) {
 				alert("Cadastro realizado com sucesso!");
+				window.location.href="login.html";
+			}
+			if (resultado==2) {
+				alert("Erro ao cadastrar loja!");
+				window.location.href="login.html";
+			}
+			if (resultado==3) {
+				alert("Loja já cadastrada!");
+				window.location.href="login.html";
+			}
+			if (resultado==4) {
+				alert("Usuário já cadastrado!");
 				window.location.href="login.html";
 			}
 		}

@@ -1,3 +1,4 @@
+
 <?php 
 session_start();
   require_once "conexao.php";
@@ -8,30 +9,25 @@ session_start();
   $buscaUsuario->execute();
   $linha=$buscaUsuario->fetchAll(PDO::FETCH_OBJ);
   	//echo $buscaUsuario->rowcount()."<br/>";
-  	$result;
 
 	if ($buscaUsuario->rowcount()==0) {
 		
 		$result=0;
-		
-
 	}
 	else{
-		
-		$result="Usuário encontrado";
+		$result=1;
 	 	$_SESSION["senha"] =$senha;
+	 	$_SESSION['logado']=true;
 	 	foreach ($linha as $Listar) {
-     		$_SESSION["nome"]=$Listar->nome;
-        header("Location:index.php");
+            $_SESSION["nome"]=$Listar->nome;
+            header("Location:index.php");
       
-     		}
+     	}
 	}
 ?>
 <html>
 <head>
 	<title></title>
-
-
 
 	<script type="text/javascript">
 		function teste(){

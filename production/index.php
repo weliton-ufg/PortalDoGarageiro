@@ -11,7 +11,7 @@ if(!isset($_SESSION)){
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -36,6 +36,12 @@ if(!isset($_SESSION)){
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+
+    <script type="text/javascript">
+    
+    </script>
+
+
   </head>
 
   <body class="nav-md">
@@ -78,7 +84,7 @@ if(!isset($_SESSION)){
                   <li><a><i class="fa fa-edit"></i> Veículos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="?id=cadastrarVeiculo">Cadastro De Veículo</a></li>
-                      <li><a href="form_validation.html">Listar Veículo</a></li>
+                      <li><a href="?id=listarVeiculos">Listar Veículo</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Cliêntes <span class="fa fa-chevron-down"></span></a>
