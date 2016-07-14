@@ -25,7 +25,7 @@
 							</h3>
 						</div>
 						<div class="panel-body">
-							<img class="col-md-12" alt="Bootstrap Image Preview"  class="img-thumbnail"                 src=<?php echo $listar->imagem;?> />
+							<img class="col-md-12" alt="Bootstrap Image Preview"  class="img-thumbnail"                 src=<?php //echo $listar->imagem;?> />
 						</div>
 						<div class="panel-footer">
 						<a href=<?php echo "index.php?id=detalheVeiculo&placa=".$listar->placa;?>

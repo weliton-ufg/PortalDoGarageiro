@@ -26,15 +26,66 @@
 			 $dataAquisicao=$listar->dataAquisicao;
 
 		}
-	}		
+	}
+ //$placa="rt54";
+ $buscaImagem=$pdo->prepare("SELECT * FROM imagem WHERE placaDoVeiculo='$placa'" );
+ $buscaImagem->execute();
+ $linha=$buscaImagem->fetchAll(PDO::FETCH_OBJ);		
 
 ?>
 <div class="container-fluid col-md-12">
 	<div class="row">
-		<div >
-			<img class="col-md-4" alt="Bootstrap Image Preview"  class="img-thumbnail" 
-			src=<?php echo $listar->imagem;?>  />
-		</div>
+		<!--inicio carrossel -->
+   <div class="container-fluid">
+  <br>
+
+  <div id="myCarousel" class="carousel slide col-md-4" data-ride="carousel">
+    <!-- Indicators -->
+
+    <ol class="carousel-indicators">
+      <?php 
+     	$j=0;
+  		if ($buscaImagem->rowcount()>0) {
+  			foreach ($linha as $listar) {
+  				$j++;			    
+      ?>
+      <li data-target="#myCarousel" 
+      class="<?php if($j==1 ){echo "active";}else{echo "";} ?>"      
+      data-slide-to="<?php echo $j ; ?>"> </li>
+    <!--  <li data-target="#myCarousel" data-slide-to="1"></li> -->
+     <?php }} ?>
+    </ol>
+   
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+    <?php 
+     	$i=0;
+  		if ($buscaImagem->rowcount()>0) {
+  			foreach ($linha as $listar) {
+  				$i++;			    
+   ?>
+
+      <div class="<?php  if($i==1){ echo "item active";}else{ echo "item"; } ?>" >
+        <img src="<?php echo $listar->imagem; ?>" alt="Chania" width="460" height="345">
+        <div class="carousel-caption">
+          <h3>Portal do Garageiro</h3>
+          <p>Sua melhor escolha.</p>
+        </div>
+      </div>
+
+<?php }} ?>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+		<!-- fim carrossel-->
 
 	    <div class="form-group col-md-2"> 
 		<label for="exampleInputEmail1">nome</label>

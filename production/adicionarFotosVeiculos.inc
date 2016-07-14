@@ -1,5 +1,54 @@
+<?php 
+ require_once "conexao.php";
+ $placa=$_GET['placa'];
+ 
+  $buscaImagem=$pdo->prepare("SELECT * FROM imagem WHERE placaDoVeiculo='$placa'" );
+    
+    $buscaImagem->execute();
+    $linha=$buscaImagem->fetchAll(PDO::FETCH_OBJ);
+    
+?>
+
+<div class="container-fluid">
+  <div class=" col-md-12">
+    <div class="row">
+
+      <div class="col-md-4">
+        <form action="cadastrarImagemVeiculo.php" method="post" enctype="multipart/form-data">
+
+          <div class="form-group col-md-4">
+          <img alt="Bootstrap Image Preview" src="images/simboloImg.png" class="img-thumbnail" />
+            <label for="exampleInputFile">Imagem</label>
+            <input type="file" name="imagem" required="" />
+              <p class="help-block">Escolha uma imagem para o veículo.</p>
+            <input type="text" hidden="" name="placa" value="<?php echo $placa; ?>">
+            <button  class="btn btn-success" onclick="comprova_extensao(this.form, this.form.imagem.value)">
+              Cadastrar
+           </button>
+          </div>
+        </form>
+      </div>
+      <!--form carregar imagem cadastradas-->
+      <?php  
+        if ($buscaImagem->rowcount()>0) { 
+           foreach($linha as $listar ){            
+        ?>
+          <div class="col-md-2">
+            <img alt="Bootstrap Image Preview" class="img-thumbnail" src=<?php echo $listar->imagem; ?>  />
+          </div>
+        <?php 
+            }
+          }
+        ?>
+
+
+      <!--fim form carregar imagem cadastradas-->
+    </div>
+  </div>
+</div>  
+
 <script type="text/javascript">
-	function comprova_extensao(formulario, arquivo) { 
+  function comprova_extensao(formulario, arquivo) { 
    extensoes_permitidas = new Array(".gif", ".jpg", ".png", ".jpeg");
    msg = ""; 
  
@@ -38,33 +87,3 @@
    return 0; 
 } 
 </script>
-
-
-<div class="container-fluid">
-  <div class=" col-md-12">
-    <div class="row">
-
-      <div class="col-md-4">
-        <form action="cadastrarImagemVeiculo.php" method="post" enctype="multipart/form-data">
-
-          <div class="form-group col-md-4">
-          <img alt="Bootstrap Image Preview" src="images/simboloImg.png" class="img-thumbnail" />
-            <label for="exampleInputFile">Imagem</label>
-            <input type="file" name="imagem" required="" />
-              <p class="help-block">Escolha uma imagem para o veículo.</p>
-            <input type="text" hidden="" name="placa" value="<?php echo $_GET['placa']; ?>">
-            <button  class="btn btn-success" onclick="comprova_extensao(this.form, this.form.imagem.value)">
-              Cadastrar
-           </button>
-          </div>
-        </form>
-      </div>
-      <!--form carregar imagem cadastradas-->
-          <div class="col-md-2">
-            <img alt="Bootstrap Image Preview" src="imagens_Veiculos/146835808757855dc73d124.jpg" class="img-thumbnail" />
-          </div>
-
-      <!--fim form carregar imagem cadastradas-->
-    </div>
-  </div>
-</div>       

@@ -33,7 +33,7 @@
              ;
           }
 
-         // move_uploaded_file( $arquivo_tmp, $destino  );    
+          move_uploaded_file( $arquivo_tmp, $destino  );    
       }
     }
   ?>
