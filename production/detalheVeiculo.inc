@@ -180,14 +180,24 @@
 		<input type="text" class="form-control" id="categoria" name="categoria" disabled value=<?php echo $categoria ;?> />
 	    </div>
 
-	    <div class="form-group col-md-4"> 
+		<div class="form-group col-md-2">
+			<label for="sel1">Câmbio</label> 
+			<select name="cambio" id="cambio" disabled 
+				class="form-control">
+				<option value="Manual">Manual</option>
+				<option value="Altomático">Altomático</option>
+			</select>
+		</div>
+
+	    <div class="form-group col-md-3"> 
 		<label for="exampleInputEmail1">Observação</label>
-		<input type="text" class="form-control" id="observacao" name="observacao" disabled value=<?php echo $observacao ;?> />
+		<textarea type="text" class="form-control" id="observacao" name="observacao" disabled value=<?php echo $observacao ;?> ></textarea>
 	    </div>
 
-	    <div class="form-group col-md-4"> 
+	    <div class="form-group col-md-3"> 
 		<label for="exampleInputEmail1">Descrição</label>
-		<input type="text" class="form-control" id="descricao" name="descricao" disabled value=<?php echo $descricao ;?> />
+		<textarea class="form-control" id="descricao" name="descricao" disabled value=<?php echo $descricao ;?> ></textarea>
+
 	    </div>
 		
 	    <div class="form-group col-md-4">
@@ -242,6 +252,7 @@
 			document.getElementById('dataAquisicao').disabled=false;
 			document.getElementById('observacao').disabled=false;
 			document.getElementById('descricao').disabled=false;
+			document.getElementById('cambio').disabled=false;
 			//document.getElementById('btnEditar').text="Salvar";
 			document.getElementById("textoBtn").innerHTML=" Salvar";
 			document.getElementById('btnEditar').className="btn btn-success";
@@ -261,6 +272,7 @@
 			document.getElementById('dataAquisicao').disabled=true;
 			document.getElementById('observacao').disabled=true;
 			document.getElementById('descricao').disabled=true;
+			document.getElementById('cambio').disabled=true;
 			document.getElementById("textoBtn").innerHTML=" &nbsp;Editar";
 			document.getElementById('btnEditar').className="btn btn-warning";
 			document.getElementById('icone').className="glyphicon glyphicon-pencil";
