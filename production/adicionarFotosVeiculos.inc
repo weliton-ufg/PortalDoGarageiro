@@ -12,9 +12,10 @@
 <div class="container-fluid">
   <div class=" col-md-12">
     <div class="row">
-
+      <h3>Cadastar ou Remover imagem do veiculo de placa <?php echo $placa ;?> </h3>
       <div class="col-md-4">
-        <form action="cadastrarImagemVeiculo.php" method="post" enctype="multipart/form-data">
+        <form action="cadastrarImagemVeiculo.php" method="post" enctype="multipart/form-data"
+        onsubmit="comprova_extensao(this.form, this.form.imagem.value);return false;">
 
           <div class="form-group col-md-4">
           <img alt="Bootstrap Image Preview" src="images/simboloImg.png" class="img-thumbnail" />
@@ -22,7 +23,7 @@
             <input type="file" name="imagem" required="" />
               <p class="help-block">Escolha uma imagem para o veículo.</p>
             <input type="text" hidden="" name="placa" value="<?php echo $placa; ?>">
-            <button  class="btn btn-success" onclick="comprova_extensao(this.form, this.form.imagem.value)">
+            <button type="submit" class="btn btn-success" onclick="">
               Cadastrar
            </button>
           </div>
@@ -35,6 +36,12 @@
         ?>
           <div class="col-md-2">
             <img alt="Bootstrap Image Preview" class="img-thumbnail" src=<?php echo $listar->imagem; ?>  />
+            <form action="deletarImagem.php" method="post" onsubmit="deletarImagem(this);return false;">
+              <input type="text" hidden="" name="idImagem" value="<?php echo $listar->idImagem ?>">
+              <input type="text" hidden="" name="imagem" value="<?php echo $listar->imagem ?>">
+              <button type="submit" class="btn btn-danger" ><span class="glyphicon glyphicon-trash"></span> 
+              Deletar</button>
+            </form>
           </div>
         <?php 
             }
@@ -48,7 +55,23 @@
 </div>  
 
 <script type="text/javascript">
+
+function deletarImagem(frm){
+  var resp=confirm("Deseja excluir essa imagem?");
+
+  if (resp) {
+    frm.submit();
+   return true;
+  }else{
+  return false;
+   
+  }
+ }
+
+
   function comprova_extensao(formulario, arquivo) { 
+    alert("ola");
+    alert(arquivo);
    extensoes_permitidas = new Array(".gif", ".jpg", ".png", ".jpeg");
    msg = ""; 
  
@@ -74,7 +97,7 @@
          return 0;
         }else{ 
           //submeto! 
-         alert ("Tudo correto. Vou submeter o formulário."); 
+         //alert ("Tudo correto. Vou submeter o formulário."); 
          formulario.submit(); 
          return 1; 
         } 

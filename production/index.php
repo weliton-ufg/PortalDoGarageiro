@@ -44,7 +44,7 @@ if(!isset($_SESSION)){
 
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md" onload="selects()">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">

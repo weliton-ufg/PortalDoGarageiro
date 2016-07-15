@@ -4,6 +4,11 @@
   	
   	$buscaVeiculo->execute();
   	$linha=$buscaVeiculo->fetchAll(PDO::FETCH_OBJ);
+
+	 $placa="rt54";
+	 $buscaImagem=$pdo->prepare("SELECT * FROM imagem WHERE placaDoVeiculo='$placa'" );
+	 $buscaImagem->execute();
+	 $linhaImg=$buscaImagem->fetchAll(PDO::FETCH_OBJ);
   	
 ?>
 

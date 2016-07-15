@@ -63,8 +63,9 @@
 	 			//avascript:history.go(1);
 			}
 			if (resultado==1) {
-				alert("Cadastro realizado com sucesso!");
+				alert("Cadastro realizado com sucesso! ");
 				window.location.href="index.php?id=adicionarFotosVeiculos&placa="+placa;
+
 			}
 		}
 	</script>
