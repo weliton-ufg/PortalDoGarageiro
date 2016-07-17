@@ -128,11 +128,10 @@
 	</div>
 	<div class="form-group col-md-3">
 		<label for="sel1">Câmbio</label> 
-		<select name="cambio"
-			class="form-control">
-			<option value="Manual">Manual</option>
-			<option value="Altomático">Altomático</option>
-		</select>
+		<option value="Manual">Manual</option>
+		<option value="Altomático">Altomático</option>
+		<option value="Automatizado">Automatizado</option>
+		<option value="CVT">CVT</option>
 	</div>
 	<div class="form-group col-md-3"> 
 		<label for="exampleInputEmail1">Kilometragem</label>

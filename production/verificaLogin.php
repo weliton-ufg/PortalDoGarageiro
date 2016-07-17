@@ -20,6 +20,7 @@ session_start();
 	 	$_SESSION['logado']=true;
 	 	foreach ($linha as $Listar) {
             $_SESSION["nome"]=$Listar->nome;
+            $_SESSION["idUsuario"]=$Listar->id;
             header("Location:index.php");
       
      	}

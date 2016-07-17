@@ -1,6 +1,7 @@
 <?php 
  require_once "conexao.php";
  $placa=$_GET['placa'];
+ $nome=$_GET['nome'];
  
   $buscaImagem=$pdo->prepare("SELECT * FROM imagem WHERE placaDoVeiculo='$placa'" );
     
@@ -12,22 +13,26 @@
 <div class="container-fluid">
   <div class=" col-md-12">
     <div class="row">
-      <h3>Cadastar ou Remover imagem do veiculo de placa <?php echo $placa ;?> </h3>
+      <h3><a href="<?php echo "index.php?id=detalheVeiculo&placa=$placa"; ?>" >
+      <?php echo $nome.' De Placa '.$placa ;?> </a> </h3>
       <div class="col-md-4">
         <form action="cadastrarImagemVeiculo.php" method="post" enctype="multipart/form-data"
         onsubmit="comprova_extensao(this.form, this.form.imagem.value);return false;">
 
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-7">
           <img alt="Bootstrap Image Preview" src="images/simboloImg.png" class="img-thumbnail" />
             <label for="exampleInputFile">Imagem</label>
             <input type="file" name="imagem" required="" />
               <p class="help-block">Escolha uma imagem para o veículo.</p>
+
             <input type="text" hidden="" name="placa" value="<?php echo $placa; ?>">
+            <input type="text" hidden="" name="nomeVeiculo" value="<?php echo $nome; ?>">
             <button type="submit" class="btn btn-success" onclick="">
               Cadastrar
            </button>
-          </div>
         </form>
+
+        </div>
       </div>
       <!--form carregar imagem cadastradas-->
       <?php  
@@ -39,6 +44,7 @@
             <form action="deletarImagem.php" method="post" onsubmit="deletarImagem(this);return false;">
               <input type="text" hidden="" name="idImagem" value="<?php echo $listar->idImagem ?>">
               <input type="text" hidden="" name="imagem" value="<?php echo $listar->imagem ?>">
+              <input type="text" hidden="" name="placa" value="<?php echo $placa ?>">
               <button type="submit" class="btn btn-danger" ><span class="glyphicon glyphicon-trash"></span> 
               Deletar</button>
             </form>
@@ -67,7 +73,19 @@ function deletarImagem(frm){
    
   }
  }
-
+  function marcar(id){
+    alert(id);
+    //var t=document.getElementsById("24").value;
+    //alert("teste= "+t);
+    var elem = document.getElementById(id);
+    elem.checked=false;
+    if (elem.value==1) {
+      elem.checked=true;
+    }else{
+      elem.checked=false;
+    }
+  }
+  
 
   function comprova_extensao(formulario, arquivo) { 
     alert("ola");

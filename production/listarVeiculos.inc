@@ -1,17 +1,11 @@
 <?php 
  require_once "conexao.php";
- 	$buscaVeiculo=$pdo->prepare("SELECT * FROM veiculo " );
+ 	$buscaVeiculo=$pdo->prepare("SELECT * FROM veiculo LEFT OUTER JOIN imagem ON veiculo.placa=imagem.placaDoVeiculo AND imagem.principal=1" );
   	
   	$buscaVeiculo->execute();
   	$linha=$buscaVeiculo->fetchAll(PDO::FETCH_OBJ);
-
-	 $placa="rt54";
-	 $buscaImagem=$pdo->prepare("SELECT * FROM imagem WHERE placaDoVeiculo='$placa'" );
-	 $buscaImagem->execute();
-	 $linhaImg=$buscaImagem->fetchAll(PDO::FETCH_OBJ);
   	
 ?>
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
@@ -30,7 +24,7 @@
 							</h3>
 						</div>
 						<div class="panel-body">
-							<img class="col-md-12" alt="Bootstrap Image Preview"  class="img-thumbnail"                 src=<?php //echo $listar->imagem;?> />
+							<img class="col-md-12" alt="Bootstrap Image Preview"  class="img-thumbnail"                 src=<?php if($listar->imagem==null){echo "images/semImagemCadastrada.jpg"; } else{ echo $listar->imagem; }?> />
 						</div>
 						<div class="panel-footer">
 						<a href=<?php echo "index.php?id=detalheVeiculo&placa=".$listar->placa;?>

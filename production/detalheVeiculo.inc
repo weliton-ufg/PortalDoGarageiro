@@ -184,19 +184,24 @@
 			<label for="sel1">Câmbio</label> 
 			<select name="cambio" id="cambio" disabled 
 				class="form-control">
+				<option value="Manual"></option>
 				<option value="Manual">Manual</option>
 				<option value="Altomático">Altomático</option>
+				<option value="Altomático">Automatizado</option>
+				<option value="Altomático">CVT</option>
 			</select>
 		</div>
 
 	    <div class="form-group col-md-3"> 
 		<label for="exampleInputEmail1">Observação</label>
-		<textarea type="text" class="form-control" id="observacao" name="observacao" disabled value=<?php echo $observacao ;?> ></textarea>
+		<textarea type="text" class="form-control" id="observacao" name="observacao" disabled ><?php echo $observacao ;?>
+		</textarea>
 	    </div>
 
 	    <div class="form-group col-md-3"> 
 		<label for="exampleInputEmail1">Descrição</label>
-		<textarea class="form-control" id="descricao" name="descricao" disabled value=<?php echo $descricao ;?> ></textarea>
+		<textarea class="form-control" id="descricao" name="descricao" disabled  ><?php echo $descricao ;?>
+		</textarea>
 
 	    </div>
 		
@@ -210,7 +215,13 @@
 	    	<span id="textoBtn">Editar</span></button>
 	        <button type="" class="btn btn-danger ">
 			<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-	         Excluir</button>
+	        Excluir</button>
+	        <button type="" class="btn btn-danger "onclick="window.location.href='index.php?id=adicionarFotosVeiculos&placa=<?php echo $placa; ?>&nome=<?php echo $nome; ?>';" )" ">
+	        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	        <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+	        <span id="textoBtn">imagem</span>
+			<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+	        </button>
 		</div>
 	
 	</div>
@@ -253,6 +264,7 @@
 			document.getElementById('observacao').disabled=false;
 			document.getElementById('descricao').disabled=false;
 			document.getElementById('cambio').disabled=false;
+			document.getElementById('categoria').disabled=false;
 			//document.getElementById('btnEditar').text="Salvar";
 			document.getElementById("textoBtn").innerHTML=" Salvar";
 			document.getElementById('btnEditar').className="btn btn-success";
@@ -273,7 +285,8 @@
 			document.getElementById('observacao').disabled=true;
 			document.getElementById('descricao').disabled=true;
 			document.getElementById('cambio').disabled=true;
-			document.getElementById("textoBtn").innerHTML=" &nbsp;Editar";
+			document.getElementById('categoria').disabled=true;
+			document.getElementById("textoBtn").innerHTML="Editar";
 			document.getElementById('btnEditar').className="btn btn-warning";
 			document.getElementById('icone').className="glyphicon glyphicon-pencil";
 		}
